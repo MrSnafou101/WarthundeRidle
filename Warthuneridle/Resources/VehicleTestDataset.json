@@ -1,0 +1,44 @@
+[
+  {
+    "VehicleName": "Tiger II (H)",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Germany",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "HeavyTank",
+    "MainGunCaliber": 88,
+    "Rank": {
+      "RankValue": 4,
+      "BattleRating": 6.7
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": false,
+    "WeightInTons": 69,
+    "TechTreePosition": "TechTree",
+    "speed": 41
+  },
+  {
+    "VehicleName": "M1A2 Abrams",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "USA",
+      "Continent": "America",
+      "FlagURL": "null"
+    },
+    "VehicleType": "MBT",
+    "mainGunCaliber": 120,
+    "Rank": {
+      "RankValue": 7,
+      "BattleRating": 12.0
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": false,
+    "WeightInTons": 62,
+    "TechTreePosition": "TechTree",
+    "speed": 67
+  }
+]
