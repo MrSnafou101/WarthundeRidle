@@ -7,7 +7,7 @@
       "Continent": "Europe",
       "FlagURL": "null"
     },
-    "VehicleType": "HeavyTank",
+    "VehicleType": "Heavy",
     "MainGunCaliber": 88,
     "Rank": {
       "RankValue": 4,
