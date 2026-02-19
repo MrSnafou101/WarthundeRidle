@@ -1,0 +1,38 @@
+﻿@using System.Reflection
+
+<div class="guess-row">
+    <div class="vehicle-cell">
+        <div class="vehicle-image">
+            @* Placeholder for vehicle image *@
+            <span>🖼️</span>
+        </div>
+        <div class="vehicle-name">@Guess.VehicleName</div>
+    </div>
+
+    <AttributeCell Value="@Guess.Country.ToString()"
+                   IsCorrect="@(Guess.Country.NationName == TargetVehicle.Country.NationName)" />
+
+    <AttributeCell Value="@Guess.VehicleType.ToString()"
+                   IsCorrect="@(Guess.VehicleType == TargetVehicle.VehicleType)" />
+
+    <AttributeCell Value="@Guess.MainGunCaliber.ToString()"
+                   IsCorrect="@(Guess.MainGunCaliber == TargetVehicle.MainGunCaliber)" />
+
+    <AttributeCell Value="@ConvertMultipleMainGunAttr(Guess.HasMultipleMainGuns)"
+                   IsCorrect="@(Guess.HasMultipleMainGuns == TargetVehicle.HasMultipleMainGuns)" />
+
+    <AttributeCell Value="@(Guess.HasAuxiliaryWeapons ? "Yes" : "No")"
+                   IsCorrect="@(Guess.HasAuxiliaryWeapons == TargetVehicle.HasAuxiliaryWeapons)" />
+
+    <AttributeCell Value="@Guess.Rank.ToString()"
+                   IsCorrect="@(Guess.Rank == TargetVehicle.Rank)" />
+
+    <AttributeCell Value="@(Guess.HasTracks ? "Tracks" : "Wheels")"
+                   IsCorrect="@(Guess.HasTracks == TargetVehicle.HasTracks)" />
+
+    <AttributeCell Value="@Guess.WeightInTons.ToString()"
+                   IsCorrect="@(Guess.WeightInTons == TargetVehicle.WeightInTons)" />
+
+    <AttributeCell Value="@Guess.TechTreePosition.ToString()"
+                   IsCorrect="@(Guess.TechTreePosition == TargetVehicle.TechTreePosition)" />
+</div>

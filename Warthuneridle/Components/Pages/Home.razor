@@ -13,7 +13,6 @@
 @code {
     private void TestJsonLoad()
     {
-        Console.WriteLine("Hello");
         var vehicles = JsonHandler.LoadGroundVehicleData();
         Console.WriteLine($"Loaded {vehicles.Count} vehicles");
         vehicles.ForEach(v => Console.WriteLine(v.VehicleName  + " " + v.Country.NationName));

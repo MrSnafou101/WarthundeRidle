@@ -1,0 +1,17 @@
+﻿@* Components/ResultModal.razor *@
+<div class="modal-overlay">
+    <div class="modal-content">
+        <h2>Success</h2>
+        <p>You guessed: @VehicleFound.VehicleName.</p>
+
+        <div class="vehicle-image-large">
+            <img src="@VehicleFound.PictureURL" alt="@VehicleFound.VehicleName" />
+        </div>
+
+        <p>Number of tries: @NumberOfTries</p>
+
+        <button class="play-again-btn" @onclick="OnPlayAgain">
+            Play again
+        </button>
+    </div>
+</div>

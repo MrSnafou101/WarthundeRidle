@@ -23,4 +23,9 @@
         }
         else { return 0; }
     }
+    override
+    public string ToString()
+    {
+        return $"Rank {RankValue} : BR {BattleRating}";
+    }
 }

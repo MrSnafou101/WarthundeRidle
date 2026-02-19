@@ -1,5 +1,5 @@
 ﻿using System;
-using Warthuneridle.Model;
+using Warthuneridle.Models;
 
 
 public class GroundVehicle

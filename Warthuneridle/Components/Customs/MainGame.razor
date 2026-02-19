@@ -1,0 +1,27 @@
+﻿@* GameBoard.razor - Main game component *@
+@page "/game"
+
+<div class="game-container">
+    <h1 class="game-title">Warthunderidle</h1>
+    
+    <SearchBar OnVehicleSelected="HandleVehicleGuess" 
+                      AvailableVehicles="availableVehicles" />
+    
+    <div class="game-grid">
+        <GuessRowHeader />
+        
+        <div class="guesses-container">
+            @foreach (var guess in guesses)
+            {
+                <GuessRow Guess="guess" TargetVehicle="targetVehicle" />
+            }
+        </div>
+    </div>
+    
+    @if (gameWon)
+    {
+        <ResultModal VehicleName="targetVehicle.Name" 
+                     NumberOfTries="guesses.Count" 
+                     OnPlayAgain="ResetGame" />
+    }
+</div>

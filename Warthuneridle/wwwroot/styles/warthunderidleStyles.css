@@ -1,0 +1,148 @@
+﻿/* CSS for the attibute cell*/
+.attribute-cell {
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.correct {
+    background-color: #029416;
+    color: black;
+}
+
+.incorrect {
+    background-color: #920000;
+    color: black;
+}
+
+.partialCorrect {
+    background-color: #cc4d03;
+    color: black;
+}
+/* Guess row */
+.guess-row {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.vehicle-cell {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+
+.vehicle-image {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.vehicle-name {
+    font-size: 12px;
+    font-weight: bold;
+}
+/* Guess row header */
+.attribute-headers {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.header-cell {
+    background-color: #d3d3d3;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px;
+}
+/* Result Modal */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    border: 2px solid #4ade80;
+    text-align: center;
+    max-width: 400px;
+}
+
+.vehicle-image-large {
+    font-size: 80px;
+    margin: 20px 0;
+}
+
+.play-again-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.play-again-btn:hover {
+    background-color: #2563eb;
+}
+/* Search bar */
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+/* Main game */
+.guesses-container {
+    display: flex;
+    flex-direction: column-reverse;
+}

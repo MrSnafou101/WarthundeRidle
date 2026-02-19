@@ -1,0 +1,26 @@
+﻿@* Components/VehicleSearchBar.razor *@
+
+@using System.Text.RegularExpressions
+
+<div class="search-container">
+    <input type="text" 
+           class="search-input" 
+           placeholder="Type vehicle, nations or vehicle type"
+           @bind-value="searchText"
+           @bind-value:event="oninput"
+           @onfocus="ShowSuggestions"
+           @onblur="HideSuggestions" />
+    
+    @if (showSuggestions && filteredVehicles.Any())
+    {
+        <div class="suggestions-dropdown">
+            @foreach (var vehicle in filteredVehicles)
+            {
+                <div class="suggestion-item"
+                    @onmousedown="@(() => SelectVehicle(vehicle))">
+                    @vehicle.VehicleName
+                </div>
+            }
+        </div>
+    }
+</div>

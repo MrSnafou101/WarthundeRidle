@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Warthuneridle.Model
+namespace Warthuneridle.Models
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Continents{

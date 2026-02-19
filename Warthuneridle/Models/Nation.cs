@@ -1,4 +1,4 @@
-﻿using Warthuneridle.Model;
+﻿using Warthuneridle.Models;
 
 public class Nation
 {
@@ -17,5 +17,10 @@ public class Nation
             return 2;
         }
         else { return 0; }
+    }
+    override
+    public string ToString()
+    {
+        return $"{NationName} : {Continent}";
     }
 }
