@@ -1,4 +1,6 @@
-﻿namespace Warthuneridle.Components.Customs
+﻿using Warthuneridle.Utils;
+
+namespace Warthuneridle.Components.Pages
 {
     public partial class MainGame{
         private List<GroundVehicle> availableVehicles = new();
@@ -10,6 +12,7 @@
             // Load vehicles from JSON
             availableVehicles = await LoadVehiclesFromJson();
             SelectRandomTarget();
+            Console.WriteLine(targetVehicle.VehicleName);
         }
 
         private void HandleVehicleGuess(GroundVehicle guessedVehicle){
@@ -32,8 +35,10 @@
         }
 
         private async Task<List<GroundVehicle>> LoadVehiclesFromJson(){
-            // TODO: Implement JSON loading
-            return new List<GroundVehicle>();
+            
+            JSONHandler jsonHandler = new JSONHandler();
+            availableVehicles = jsonHandler.LoadGroundVehicleData();
+            return availableVehicles;
         }
     }
 }

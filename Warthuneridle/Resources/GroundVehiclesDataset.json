@@ -1,0 +1,401 @@
+[
+  {
+    "VehicleName": "Tiger II (H)",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Germany",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Heavy",
+    "MainGunCaliber": 88,
+    "Rank": {
+      "RankValue": 4,
+      "BattleRating": 6.7
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 69,
+    "TechTreePosition": "TechTree",
+    "speed": 41
+  },
+  {
+    "VehicleName": "M1A2 Abrams",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "USA",
+      "Continent": "America",
+      "FlagURL": "null"
+    },
+    "VehicleType": "MBT",
+    "MainGunCaliber": 120,
+    "Rank": {
+      "RankValue": 7,
+      "BattleRating": 12.0
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 62,
+    "TechTreePosition": "TechTree",
+    "speed": 67
+  },
+  {
+    "VehicleName": "T-34-85",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "USSR",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Medium",
+    "MainGunCaliber": 85,
+    "Rank": {
+      "RankValue": 3,
+      "BattleRating": 5.7
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 32.4,
+    "TechTreePosition": "TechTree",
+    "speed": 55
+  },
+  {
+    "VehicleName": "Panther A",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Germany",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Medium",
+    "MainGunCaliber": 75,
+    "Rank": {
+      "RankValue": 4,
+      "BattleRating": 6.0
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 45.3,
+    "TechTreePosition": "TechTree",
+    "speed": 46
+  },
+  {
+    "VehicleName": "IS-2 (1944)",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "USSR",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Heavy",
+    "MainGunCaliber": 122,
+    "Rank": {
+      "RankValue": 4,
+      "BattleRating": 6.7
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 46.2,
+    "TechTreePosition": "TechTree",
+    "speed": 37
+  },
+  {
+    "VehicleName": "Leopard 2A5",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Germany",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "MBT",
+    "MainGunCaliber": 120,
+    "Rank": {
+      "RankValue": 8,
+      "BattleRating": 12.3
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 59.5,
+    "TechTreePosition": "TechTree",
+    "speed": 68
+  },
+  {
+    "VehicleName": "Challenger 2",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "UK",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "MBT",
+    "MainGunCaliber": 120,
+    "Rank": {
+      "RankValue": 7,
+      "BattleRating": 10.3
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 64.8,
+    "TechTreePosition": "TechTree",
+    "speed": 56
+  },
+  {
+    "VehicleName": "Type 90",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Japan",
+      "Continent": "Asia",
+      "FlagURL": "null"
+    },
+    "VehicleType": "MBT",
+    "MainGunCaliber": 120,
+    "Rank": {
+      "RankValue": 7,
+      "BattleRating": 11.7
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 53.1,
+    "TechTreePosition": "TechTree",
+    "speed": 73
+  },
+  {
+    "VehicleName": "Maus",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Germany",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Heavy",
+    "MainGunCaliber": 128,
+    "Rank": {
+      "RankValue": 5,
+      "BattleRating": 7.7
+    },
+    "HasMultipleMainGuns": 2,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 188,
+    "TechTreePosition": "Premium",
+    "speed": 21
+  },
+  {
+    "VehicleName": "BMP-2M",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Russia",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Light",
+    "MainGunCaliber": 30,
+    "Rank": {
+      "RankValue": 7,
+      "BattleRating": 10.3
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 14.5,
+    "TechTreePosition": "Squadron",
+    "speed": 65
+  },
+  {
+    "VehicleName": "AMX-30B2",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "France",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "MBT",
+    "MainGunCaliber": 105,
+    "Rank": {
+      "RankValue": 6,
+      "BattleRating": 8.7
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 37,
+    "TechTreePosition": "TechTree",
+    "speed": 65
+  },
+  {
+    "VehicleName": "Panhard AML-90",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "France",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Light",
+    "MainGunCaliber": 90,
+    "Rank": {
+      "RankValue": 5,
+      "BattleRating": 7.7
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": false,
+    "WeightInTons": 5.5,
+    "TechTreePosition": "TechTree",
+    "speed": 91
+  },
+  {
+    "VehicleName": "M163 Vulcan",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "USA",
+      "Continent": "America",
+      "FlagURL": "null"
+    },
+    "VehicleType": "AA",
+    "MainGunCaliber": 20,
+    "Rank": {
+      "RankValue": 5,
+      "BattleRating": 7.3
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 11.2,
+    "TechTreePosition": "TechTree",
+    "speed": 64
+  },
+  {
+    "VehicleName": "FlaRakPanzer Roland",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Germany",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "AA",
+    "MainGunCaliber": 163,
+    "Rank": {
+      "RankValue": 7,
+      "BattleRating": 10.0
+    },
+    "HasMultipleMainGuns": 0,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 32.5,
+    "TechTreePosition": "TechTree",
+    "speed": 75
+  },
+  {
+    "VehicleName": "Pantsir-S1",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Russia",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "AA",
+    "MainGunCaliber": 30,
+    "Rank": {
+      "RankValue": 8,
+      "BattleRating": 12.0
+    },
+    "HasMultipleMainGuns": 2,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 34,
+    "TechTreePosition": "TechTree",
+    "speed": 70
+  },
+  {
+    "VehicleName": "Jagdpanther",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Germany",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "TD",
+    "MainGunCaliber": 75,
+    "Rank": {
+      "RankValue": 4,
+      "BattleRating": 6.3
+    },
+    "HasMultipleMainGuns": 1,
+    "HasAuxiliaryWeapons": false,
+    "HasTracks": true,
+    "WeightInTons": 46,
+    "TechTreePosition": "TechTree",
+    "speed": 46
+  },
+  {
+    "VehicleName": "M113A1 TOW",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "China",
+      "Continent": "Asia",
+      "FlagURL": "null"
+    },
+    "VehicleType": "ATGM_carrier",
+    "MainGunCaliber": 127,
+    "Rank": {
+      "RankValue": 5,
+      "BattleRating": 11.2
+    },
+    "HasMultipleMainGuns": 0,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 12.5,
+    "TechTreePosition": "TechTree",
+    "speed": 64
+  },
+  {
+    "VehicleName": "Object 122 MT",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "China",
+      "Continent": "Asia",
+      "FlagURL": "null"
+    },
+    "VehicleType": "MBT",
+    "MainGunCaliber": 122,
+    "Rank": {
+      "RankValue": 6,
+      "BattleRating": 8.7
+    },
+    "HasMultipleMainGuns": 0,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 37.5,
+    "TechTreePosition": "Squadron",
+    "speed": 55
+  },
+  {
+    "VehicleName": "2S38",
+    "PictureURL": "null",
+    "Country": {
+      "NationName": "Russia",
+      "Continent": "Europe",
+      "FlagURL": "null"
+    },
+    "VehicleType": "Light",
+    "MainGunCaliber": 30,
+    "Rank": {
+      "RankValue": 7,
+      "BattleRating": 10.7
+    },
+    "HasMultipleMainGuns": 0,
+    "HasAuxiliaryWeapons": true,
+    "HasTracks": true,
+    "WeightInTons": 21.5,
+    "TechTreePosition": "Premium",
+    "speed": 70
+  }
+]

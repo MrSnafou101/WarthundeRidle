@@ -1,17 +1,14 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Warthuneridle.Data
+namespace Warthuneridle.Utils
 {
-    public class JSONHandler
-    {
-        public string TestFilePath = Environment.CurrentDirectory + @"\Resources\VehicleTestDataset.json";
+    public class JSONHandler{
+        public string TestFilePath = Environment.CurrentDirectory + @"\Resources\GroundVehiclesDataset.json";
         public List<GroundVehicle> LoadGroundVehicles = new List<GroundVehicle>();
 
-        public List<GroundVehicle> LoadGroundVehicleData()
-        {
-            if (File.Exists(TestFilePath))
-            {
+        public List<GroundVehicle> LoadGroundVehicleData(){
+            if (File.Exists(TestFilePath)){
                 string jsonString = File.ReadAllText(TestFilePath);
                 LoadGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString) ?? new List<GroundVehicle>();
 
@@ -24,9 +21,7 @@ namespace Warthuneridle.Data
                 LoadGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString, options) ?? new List<GroundVehicle>();
 
                 return LoadGroundVehicles;
-            }
-            else
-            {
+            }else{
                 Console.WriteLine($"File not found: {TestFilePath}");
                 return null;
             }

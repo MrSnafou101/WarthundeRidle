@@ -1,5 +1,5 @@
 using Warthuneridle.Components;
-using Warthuneridle.Data;
+using Warthuneridle.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 

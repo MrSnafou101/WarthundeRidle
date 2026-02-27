@@ -9,6 +9,7 @@ namespace Warthuneridle.Models
         Light,
         AA,
         ATGM_carrier,
-        MBT
+        MBT,
+        TD
     }
 }

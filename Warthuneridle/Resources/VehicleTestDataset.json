@@ -15,7 +15,7 @@
     },
     "HasMultipleMainGuns": 1,
     "HasAuxiliaryWeapons": false,
-    "HasTracks": false,
+    "HasTracks": true,
     "WeightInTons": 69,
     "TechTreePosition": "TechTree",
     "speed": 41
@@ -29,14 +29,14 @@
       "FlagURL": "null"
     },
     "VehicleType": "MBT",
-    "mainGunCaliber": 120,
+    "MainGunCaliber": 120,
     "Rank": {
       "RankValue": 7,
       "BattleRating": 12.0
     },
     "HasMultipleMainGuns": 1,
     "HasAuxiliaryWeapons": false,
-    "HasTracks": false,
+    "HasTracks": true,
     "WeightInTons": 62,
     "TechTreePosition": "TechTree",
     "speed": 67

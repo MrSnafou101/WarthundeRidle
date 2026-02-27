@@ -1,5 +1,7 @@
-﻿@* GameBoard.razor - Main game component *@
-@page "/game"
+﻿@page "/game"
+@rendermode InteractiveServer
+@using Warthuneridle.Components.Customs
+@inject JSONHandler JsonHandler
 
 <div class="game-container">
     <h1 class="game-title">Warthunderidle</h1>

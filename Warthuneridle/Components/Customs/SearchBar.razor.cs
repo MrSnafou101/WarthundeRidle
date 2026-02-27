@@ -18,7 +18,7 @@ namespace Warthuneridle.Components.Customs
 
         // Regex pattern: only letters, digits, spaces, underscores, and dashes
         //^[a-zA-Z0-9 _-]+$
-        private readonly Regex validInputPattern = new Regex(@"[a-zA-Z0-9 _-]");
+        private readonly Regex validInputPattern = new Regex(@"[a-zA-Z0-9 _\-\(\)]");
 
         protected override void OnParametersSet()
         {
