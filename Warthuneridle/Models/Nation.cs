@@ -14,6 +14,6 @@ public class Nation{
     }
     override
     public string ToString(){
-        return $"{NationName} : {Continent}";
+        return $"{NationName} ({Continent})";
     }
 }

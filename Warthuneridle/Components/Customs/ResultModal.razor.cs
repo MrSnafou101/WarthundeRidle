@@ -13,5 +13,19 @@ namespace Warthuneridle.Components.Customs
 
         [Parameter]
         public EventCallback OnPlayAgain { get; set; }
+
+        [Parameter]
+        public EventCallback OnClose { get; set; }
+
+        // Internal visibility state so the modal can hide itself when closed.
+        private bool _visible = true;
+
+        // Close the modal: hide locally and notify parent if a callback is provided.
+        public async Task CloseModal()
+        {
+            _visible = false;
+            await OnClose.InvokeAsync();
+        }
+
     }
 }

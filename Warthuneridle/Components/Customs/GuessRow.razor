@@ -10,29 +10,30 @@
     </div>
 
     <AttributeCell Value="@Guess.Country.ToString()"
-                   IsCorrect="@(Guess.Country.NationName == TargetVehicle.Country.NationName)" />
+                   IsCorrectVal="@GetCompareValue("nations")" 
+                   FlagIcon="@getFlag()"/>
 
     <AttributeCell Value="@Guess.VehicleType.ToString()"
-                   IsCorrect="@(Guess.VehicleType == TargetVehicle.VehicleType)" />
+                   IsCorrectVal="@GetCompareValue("type")" />
 
     <AttributeCell Value="@Guess.MainGunCaliber.ToString()"
-                   IsCorrect="@(Guess.MainGunCaliber == TargetVehicle.MainGunCaliber)" />
+                   IsCorrectVal="@GetCompareValue("gunCaliber")" />
 
     <AttributeCell Value="@ConvertMultipleMainGunAttr(Guess.HasMultipleMainGuns)"
-                   IsCorrect="@(Guess.HasMultipleMainGuns == TargetVehicle.HasMultipleMainGuns)" />
+                   IsCorrectVal="@GetCompareValue("gunAmount")" />
 
     <AttributeCell Value="@(Guess.HasAuxiliaryWeapons ? "Yes" : "No")"
-                   IsCorrect="@(Guess.HasAuxiliaryWeapons == TargetVehicle.HasAuxiliaryWeapons)" />
+                   IsCorrectVal="@GetCompareValue("auxiliaryGun")" />
 
     <AttributeCell Value="@Guess.Rank.ToString()"
-                   IsCorrect="@(Guess.Rank == TargetVehicle.Rank)" />
+                   IsCorrectVal="@GetCompareValue("rank")" />
 
     <AttributeCell Value="@(Guess.HasTracks ? "Tracks" : "Wheels")"
-                   IsCorrect="@(Guess.HasTracks == TargetVehicle.HasTracks)" />
+                   IsCorrectVal="@GetCompareValue("tracks")" />
 
     <AttributeCell Value="@Guess.WeightInTons.ToString()"
-                   IsCorrect="@(Guess.WeightInTons == TargetVehicle.WeightInTons)" />
+                   IsCorrectVal="@GetCompareValue("weight")" />
 
     <AttributeCell Value="@Guess.TechTreePosition.ToString()"
-                   IsCorrect="@(Guess.TechTreePosition == TargetVehicle.TechTreePosition)" />
+                    IsCorrectVal="@GetCompareValue("position")" />
 </div>

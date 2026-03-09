@@ -5,12 +5,13 @@ namespace Warthuneridle.Utils
 {
     public class JSONHandler{
         public string TestFilePath = Environment.CurrentDirectory + @"\Resources\GroundVehiclesDataset.json";
+        //public string TestFilePath = Environment.CurrentDirectory + @"\Resources\VehicleTestDataset.json";
         public List<GroundVehicle> LoadGroundVehicles = new List<GroundVehicle>();
 
         public List<GroundVehicle> LoadGroundVehicleData(){
             if (File.Exists(TestFilePath)){
                 string jsonString = File.ReadAllText(TestFilePath);
-                LoadGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString) ?? new List<GroundVehicle>();
+                //LoadGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString) ?? new List<GroundVehicle>();
 
 
                 var options = new JsonSerializerOptions{

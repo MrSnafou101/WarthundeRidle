@@ -6,8 +6,8 @@
     <input type="text" 
            class="search-input" 
            placeholder="Type vehicle, nations or vehicle type"
-           @bind-value="searchText"
-           @bind-value:event="oninput"
+           @bind-value="SearchText"
+           @bind-value:event="FilterVehicles"
            @onfocus="ShowSuggestions"
            @onblur="HideSuggestions" />
     

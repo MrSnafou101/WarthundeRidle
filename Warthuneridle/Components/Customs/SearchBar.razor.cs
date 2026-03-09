@@ -5,14 +5,13 @@ namespace Warthuneridle.Components.Customs
 {
     public partial class SearchBar
     {
-        public string SearchTerm { get; set; } = string.Empty;
         [Parameter]
         public List<GroundVehicle> AvailableVehicles { get; set; } = new();
 
         [Parameter]
         public EventCallback<GroundVehicle> OnVehicleSelected { get; set; }
-
-        private string searchText = "";
+        public string SearchText { get; set; } = string.Empty;
+        //private string searchText = "";
         private bool showSuggestions = false;
         private List<GroundVehicle> filteredVehicles = new();
 
@@ -29,19 +28,19 @@ namespace Warthuneridle.Components.Customs
         {
 
             // Auto-strip invalid characters - keep only valid ones
-            if (!string.IsNullOrWhiteSpace(searchText)){
-                var matches = validInputPattern.Matches(searchText);
-                searchText = string.Concat(matches.Select(m => m.Value));
+            if (!string.IsNullOrWhiteSpace(SearchText)){
+                var matches = validInputPattern.Matches(SearchText);
+                SearchText = string.Concat(matches.Select(m => m.Value));
             }
 
-            if (string.IsNullOrWhiteSpace(searchText)){
+            if (string.IsNullOrWhiteSpace(SearchText)){
                 filteredVehicles = AvailableVehicles.Take(10).ToList();
             }
             else{
                 filteredVehicles = AvailableVehicles
-                    .Where(v => v.VehicleName.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
-                               v.Country.NationName.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
-                               v.VehicleType.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                    .Where(v => v.VehicleName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                               v.Country.NationName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                               v.VehicleType.ToString().Contains(SearchText, StringComparison.OrdinalIgnoreCase))
                     .Take(10).ToList();
             }
         }
@@ -58,7 +57,7 @@ namespace Warthuneridle.Components.Customs
         }
 
         private async Task SelectVehicle(GroundVehicle vehicle){
-            searchText = "";
+            SearchText = "";
             showSuggestions = false;
             await OnVehicleSelected.InvokeAsync(vehicle);
         }

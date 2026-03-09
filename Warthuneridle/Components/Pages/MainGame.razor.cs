@@ -6,6 +6,7 @@ namespace Warthuneridle.Components.Pages
         private List<GroundVehicle> availableVehicles = new();
         private GroundVehicle targetVehicle;
         private List<GroundVehicle> guesses = new();
+        //private Dictionary<string, int> compareResults = new();
         private bool gameWon = false;
 
         protected override async Task OnInitializedAsync(){
@@ -17,15 +18,15 @@ namespace Warthuneridle.Components.Pages
 
         private void HandleVehicleGuess(GroundVehicle guessedVehicle){
             guesses.Add(guessedVehicle);
-            // will check more than only the name, probalby have some ID too
-            if (guessedVehicle.VehicleName == targetVehicle.VehicleName){
-                gameWon = true;
-            }
+
+            if (guessedVehicle.Equals(targetVehicle)) gameWon = true;
+            //compareResults =  guessedVehicle.CompareVehicles(targetVehicle);
         }
 
         private void ResetGame(){
             guesses.Clear();
             gameWon = false;
+            targetVehicle = null;
             SelectRandomTarget();
         }
 

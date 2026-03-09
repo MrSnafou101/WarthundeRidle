@@ -11,4 +11,8 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Blazicons.FlagIcons" Version="2.0.5" />
+  </ItemGroup>
+
 </Project>

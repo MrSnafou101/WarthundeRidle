@@ -10,6 +10,7 @@ namespace Warthuneridle.Models
         AA,
         ATGM_carrier,
         MBT,
-        TD
+        TD,
+        ERR
     }
 }

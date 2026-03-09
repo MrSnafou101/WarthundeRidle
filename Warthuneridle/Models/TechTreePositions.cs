@@ -6,6 +6,7 @@ namespace Warthuneridle.Models
     public enum TechTreePositions{
         Premium,
         Squadron,
-        TechTree
+        TechTree,
+        Err
     }
 }

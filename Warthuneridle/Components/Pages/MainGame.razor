@@ -15,14 +15,14 @@
         <div class="guesses-container">
             @foreach (var guess in guesses)
             {
-                <GuessRow Guess="guess" TargetVehicle="targetVehicle" />
+                <GuessRow @key="guess.VehicleId" Guess="guess" TargetVehicle="targetVehicle"/>
             }
         </div>
     </div>
     
     @if (gameWon)
     {
-        <ResultModal VehicleName="targetVehicle.Name" 
+        <ResultModal VehicleFound="targetVehicle"
                      NumberOfTries="guesses.Count" 
                      OnPlayAgain="ResetGame" />
     }
