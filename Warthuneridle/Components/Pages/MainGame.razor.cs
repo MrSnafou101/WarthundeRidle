@@ -20,7 +20,7 @@ namespace Warthuneridle.Components.Pages
             guesses.Add(guessedVehicle);
 
             if (guessedVehicle.Equals(targetVehicle)) gameWon = true;
-            //compareResults =  guessedVehicle.CompareVehicles(targetVehicle);
+            guessedVehicle.CompareVehicles(targetVehicle);
         }
 
         private void ResetGame(){

@@ -10,7 +10,17 @@ namespace Warthuneridle.Components.Customs
 
         [Parameter]
         public EventCallback<GroundVehicle> OnVehicleSelected { get; set; }
-        public string SearchText { get; set; } = string.Empty;
+        private string searchText = string.Empty;
+        public string SearchText
+        {
+            get => searchText;
+            set
+            {
+                if (searchText == value) return;
+                searchText = value;
+                FilterVehicles();
+            }
+        }
         //private string searchText = "";
         private bool showSuggestions = false;
         private List<GroundVehicle> filteredVehicles = new();

@@ -15,7 +15,8 @@
         <div class="guesses-container">
             @foreach (var guess in guesses)
             {
-                <GuessRow @key="guess.VehicleId" Guess="guess" TargetVehicle="targetVehicle"/>
+                @*<GuessRow @key="guess.VehicleId" Guess="guess" TargetVehicle="targetVehicle"/>*@
+                <GuessRow Guess="guess" TargetVehicle="targetVehicle"/>
             }
         </div>
     </div>

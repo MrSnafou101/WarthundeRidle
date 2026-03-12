@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 using Warthuneridle.Models;
+using Warthuneridle.Models.DicoKeys;
 
 
 public class GroundVehicle
@@ -23,9 +24,11 @@ public class GroundVehicle
     public bool HasAuxiliaryWeapons { get; set; }
     public bool HasTracks { get; set; }
     public double WeightInTons { get; set; }
-    /*** Vahicle's in game properties ***/
+    /*** Vehicle's in game properties ***/
     public VehicleRank Rank { get; set; }
     public TechTreePositions TechTreePosition { get; set; }
+    /*** working propeties ***/
+    public Dictionary<GroundStatsKeys, int> ComparisonResults { get; set; }
 
     /*** Comparation methodes ***/
     /// <summary>
@@ -39,32 +42,41 @@ public class GroundVehicle
     ///  1 => same
     ///  2 => partially similar (used for caliber and weight when they are not the same but within the same range)
     /// </returns>
-    public Dictionary<string, int> CompareVehicles(GroundVehicle target) {
-        Dictionary<string, int> resDico = new Dictionary<string, int>() {
-            {"name",-1 },                                    
-            {"nations",-1 },                                    
-            {"gunCaliber",-1 },                                    
-            {"gunAmount",-1 },                                    
-            {"auxiliaryGun",-1 },                                    
-            {"rank",-1 },                                    
-            {"type",-1 },                                    
-            {"position",-1 },                                    
-            {"weight",-1 },                                    
-            {"tracks",-1 }                                    
+    public Dictionary<GroundStatsKeys, int> CompareVehicles(GroundVehicle target) {
+        this.ComparisonResults = new Dictionary<GroundStatsKeys, int>() {
+            {GroundStatsKeys.name,-1 },                                    
+            {GroundStatsKeys.nations,-1 },                                    
+            {GroundStatsKeys.guncaliber,-1 },                                    
+            {GroundStatsKeys.gunamount,-1 },                                    
+            {GroundStatsKeys.auxiliarygun,-1 },                                    
+            {GroundStatsKeys.rank,-1 },                                    
+            {GroundStatsKeys.type,-1 },                                    
+            {GroundStatsKeys.position,-1 },                                    
+            {GroundStatsKeys.weight,-1 },                                    
+            {GroundStatsKeys.tracks,-1 }                                    
         };
 
-        resDico["name"] = this.VehicleName == target.VehicleName ? 1 : 0;
-        resDico["nations"] = this.Country.IsCorrectNation(target.Country);
-        resDico["gunCaliber"] = IsSameCaliber(target.MainGunCaliber);
-        resDico["gunAmount"] = HasSameGunNumbers(target.HasMultipleMainGuns) ? 1 : 0;
-        resDico["auxiliaryGun"] = this.HasAuxiliaryWeapons == target.HasAuxiliaryWeapons ? 1 : 0;
-        resDico["rank"] = this.Rank.IsSameRankAndBR(target.Rank);
-        resDico["type"] = isSameVehicleType(target.VehicleType);
-        resDico["position"] = IsSameTechTreePosition(target.TechTreePosition);
-        resDico["weight"] = IsSameWeight(target.WeightInTons);
-        resDico["tracks"] = this.HasTracks == target.HasTracks ? 1 : 0;
+        this.ComparisonResults[GroundStatsKeys.name] = this.VehicleName == target.VehicleName ? 1 : 0;
+        this.ComparisonResults[GroundStatsKeys.nations] = this.Country.IsCorrectNation(target.Country);
+        this.ComparisonResults[GroundStatsKeys.guncaliber] = IsSameCaliber(target.MainGunCaliber);
+        this.ComparisonResults[GroundStatsKeys.gunamount] = HasSameGunNumbers(target.HasMultipleMainGuns) ? 1 : 0;
+        this.ComparisonResults[GroundStatsKeys.auxiliarygun] = this.HasAuxiliaryWeapons == target.HasAuxiliaryWeapons ? 1 : 0;
+        this.ComparisonResults[GroundStatsKeys.rank] = this.Rank.IsSameRankAndBR(target.Rank);
+        this.ComparisonResults[GroundStatsKeys.type] = isSameVehicleType(target.VehicleType);
+        this.ComparisonResults[GroundStatsKeys.position] = IsSameTechTreePosition(target.TechTreePosition);
+        this.ComparisonResults[GroundStatsKeys.weight] = IsSameWeight(target.WeightInTons);
+        this.ComparisonResults[GroundStatsKeys.tracks] = this.HasTracks == target.HasTracks ? 1 : 0;
 
-        return resDico;
+        return this.ComparisonResults;
+    }
+    public int GetstatComparaisonByStringKey(string key){
+        if (Enum.TryParse(typeof(GroundStatsKeys), key, out var v)){
+            if (this.ComparisonResults != null && this.ComparisonResults.TryGetValue((GroundStatsKeys)v, out var res)) return res;
+            else return -1;
+        }
+        else {
+            return -1;
+        }
     }
     public int IsSameTechTreePosition(TechTreePositions toCheckTechTreePosition)
     {
@@ -126,6 +138,8 @@ public class GroundVehicle
         }
     }
 
-    public override bool Equals(Object other) => this.VehicleId == ((GroundVehicle)other).VehicleId;
-    public override int GetHashCode(){ return this.VehicleId.GetHashCode(); }
+    public override bool Equals(Object other) => this.VehicleName == ((GroundVehicle)other).VehicleName;
+    public override int GetHashCode() { return this.VehicleName.GetHashCode(); }
+    //public override bool Equals(Object other) => this.VehicleId == ((GroundVehicle)other).VehicleId;
+    //public override int GetHashCode(){ return this.VehicleId.GetHashCode(); }
 }

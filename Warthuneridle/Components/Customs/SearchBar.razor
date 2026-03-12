@@ -7,7 +7,7 @@
            class="search-input" 
            placeholder="Type vehicle, nations or vehicle type"
            @bind-value="SearchText"
-           @bind-value:event="FilterVehicles"
+           @bind-value:event="oninput"
            @onfocus="ShowSuggestions"
            @onblur="HideSuggestions" />
     
