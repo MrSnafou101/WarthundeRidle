@@ -7,6 +7,6 @@ namespace Warthuneridle.Models
         Premium,
         Squadron,
         TechTree,
-        Err
+        Null
     }
 }

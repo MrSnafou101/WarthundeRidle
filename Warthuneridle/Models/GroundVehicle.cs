@@ -4,14 +4,8 @@ using Warthuneridle.Models;
 using Warthuneridle.Models.DicoKeys;
 
 
-public class GroundVehicle
-{
-    /*** Vehicle identification properties ***/
-    public int VehicleId { get; set; }// may change to UUID
-    public string VehicleName { get; set; }
-    public string PictureURL { get; set; }
-    public VehicleTypes VehicleType { get; set; }
-    public Nation Country { get; set; }
+public class GroundVehicle : Vehicle
+{  
     /*** Vehicle caracteristics ***/
     public int MainGunCaliber { get; set; }
     /*
@@ -24,11 +18,39 @@ public class GroundVehicle
     public bool HasAuxiliaryWeapons { get; set; }
     public bool HasTracks { get; set; }
     public double WeightInTons { get; set; }
-    /*** Vehicle's in game properties ***/
-    public VehicleRank Rank { get; set; }
-    public TechTreePositions TechTreePosition { get; set; }
-    /*** working propeties ***/
-    public Dictionary<GroundStatsKeys, int> ComparisonResults { get; set; }
+
+    public GroundVehicle(int id, string name, Nation country, VehicleRank rank, string vehicleType, int techTreePosition, 
+        int mainGunCaliber, int hasMultipleMainGuns, bool hasAuxiliaryWeapons, bool hasTracks, double weightInTons){
+        VehicleId = id;
+        VehicleName = name;
+        Country = country;
+        Rank = rank;
+        VehicleType = vehicleType;
+        TechTreePosition = techTreePosition;
+        MainGunCaliber = mainGunCaliber;
+        HasMultipleMainGuns = hasMultipleMainGuns;
+        HasAuxiliaryWeapons = hasAuxiliaryWeapons;
+        HasTracks = hasTracks;
+        WeightInTons = weightInTons;
+    }
+
+    public override object Clone()
+    {
+        return new GroundVehicle {
+        
+            VehicleId = this.VehicleId,
+            VehicleName = this.VehicleName,
+            Country = (Nation)this.Country.Clone(),
+            Rank = (VehicleRank)this.Rank.Clone(),
+            VehicleType = this.VehicleType,
+            TechTreePosition = this.TechTreePosition,
+            MainGunCaliber = this.MainGunCaliber,
+            HasMultipleMainGuns = this.HasMultipleMainGuns,
+            HasAuxiliaryWeapons = this.HasAuxiliaryWeapons,
+            HasTracks = this.HasTracks,
+            WeightInTons = this.WeightInTons
+        };
+    }
 
     /*** Comparation methodes ***/
     /// <summary>
@@ -42,52 +64,38 @@ public class GroundVehicle
     ///  1 => same
     ///  2 => partially similar (used for caliber and weight when they are not the same but within the same range)
     /// </returns>
-    public Dictionary<GroundStatsKeys, int> CompareVehicles(GroundVehicle target) {
-        this.ComparisonResults = new Dictionary<GroundStatsKeys, int>() {
-            {GroundStatsKeys.name,-1 },                                    
-            {GroundStatsKeys.nations,-1 },                                    
-            {GroundStatsKeys.guncaliber,-1 },                                    
-            {GroundStatsKeys.gunamount,-1 },                                    
-            {GroundStatsKeys.auxiliarygun,-1 },                                    
-            {GroundStatsKeys.rank,-1 },                                    
-            {GroundStatsKeys.type,-1 },                                    
-            {GroundStatsKeys.position,-1 },                                    
-            {GroundStatsKeys.weight,-1 },                                    
-            {GroundStatsKeys.tracks,-1 }                                    
+    public override Dictionary<VehicleStatsKeys, int> CompareVehicles(Vehicle target) {
+        this.ComparisonResults = new Dictionary<VehicleStatsKeys, int>() {
+            {VehicleStatsKeys.name,-1 },                                    
+            {VehicleStatsKeys.nations,-1 },                                    
+            {VehicleStatsKeys.guncaliber,-1 },                                    
+            {VehicleStatsKeys.gunamount,-1 },                                    
+            {VehicleStatsKeys.auxiliarygun,-1 },                                    
+            {VehicleStatsKeys.rank,-1 },                                    
+            {VehicleStatsKeys.type,-1 },                                    
+            {VehicleStatsKeys.position,-1 },                                    
+            {VehicleStatsKeys.weight,-1 },                                    
+            {VehicleStatsKeys.tracks,-1 }                                    
         };
+        //if (target.GetType().IsEquivalentTo(typeof(GroundVehicle)))
+        if (target is GroundVehicle gv){
+            target = (GroundVehicle)target;
 
-        this.ComparisonResults[GroundStatsKeys.name] = this.VehicleName == target.VehicleName ? 1 : 0;
-        this.ComparisonResults[GroundStatsKeys.nations] = this.Country.IsCorrectNation(target.Country);
-        this.ComparisonResults[GroundStatsKeys.guncaliber] = IsSameCaliber(target.MainGunCaliber);
-        this.ComparisonResults[GroundStatsKeys.gunamount] = HasSameGunNumbers(target.HasMultipleMainGuns) ? 1 : 0;
-        this.ComparisonResults[GroundStatsKeys.auxiliarygun] = this.HasAuxiliaryWeapons == target.HasAuxiliaryWeapons ? 1 : 0;
-        this.ComparisonResults[GroundStatsKeys.rank] = this.Rank.IsSameRankAndBR(target.Rank);
-        this.ComparisonResults[GroundStatsKeys.type] = isSameVehicleType(target.VehicleType);
-        this.ComparisonResults[GroundStatsKeys.position] = IsSameTechTreePosition(target.TechTreePosition);
-        this.ComparisonResults[GroundStatsKeys.weight] = IsSameWeight(target.WeightInTons);
-        this.ComparisonResults[GroundStatsKeys.tracks] = this.HasTracks == target.HasTracks ? 1 : 0;
+            this.ComparisonResults[VehicleStatsKeys.name] = this.VehicleName == gv.VehicleName ? 1 : 0;
+            this.ComparisonResults[VehicleStatsKeys.nations] = this.Country.IsCorrectNation(gv.Country);
+            this.ComparisonResults[VehicleStatsKeys.guncaliber] = IsSameCaliber(gv.MainGunCaliber);
+            this.ComparisonResults[VehicleStatsKeys.gunamount] = HasSameGunNumbers(gv.HasMultipleMainGuns) ? 1 : 0;
+            this.ComparisonResults[VehicleStatsKeys.auxiliarygun] = this.HasAuxiliaryWeapons == gv.HasAuxiliaryWeapons ? 1 : 0;
+            this.ComparisonResults[VehicleStatsKeys.rank] = this.Rank.IsSameRankAndBR(gv.Rank);
+            this.ComparisonResults[VehicleStatsKeys.type] = isSameVehicleType(gv.VehicleType);
+            this.ComparisonResults[VehicleStatsKeys.position] = IsSameTechTreePosition(gv.TechTreePosition);
+            this.ComparisonResults[VehicleStatsKeys.weight] = IsSameWeight(gv.WeightInTons);
+            this.ComparisonResults[VehicleStatsKeys.tracks] = this.HasTracks == gv.HasTracks ? 1 : 0;
+        }
 
         return this.ComparisonResults;
     }
-    public int GetstatComparaisonByStringKey(string key){
-        if (Enum.TryParse(typeof(GroundStatsKeys), key, out var v)){
-            if (this.ComparisonResults != null && this.ComparisonResults.TryGetValue((GroundStatsKeys)v, out var res)) return res;
-            else return -1;
-        }
-        else {
-            return -1;
-        }
-    }
-    public int IsSameTechTreePosition(TechTreePositions toCheckTechTreePosition)
-    {
-        if (this.TechTreePosition == toCheckTechTreePosition) return 1;
-        else return 0;
-    }
-    public int isSameVehicleType(VehicleTypes toCheckVehicleType)
-    {
-        if (this.VehicleType == toCheckVehicleType) return 1;
-        else return 0;
-    }
+
     /// <summary>
     /// Check if the weights are the same. if not will check ifthe difference is within 5 tons.
     /// </summary>
@@ -121,8 +129,6 @@ public class GroundVehicle
 
     public bool HasSameGunNumbers(int gunNumberToCheck) => this.HasMultipleMainGuns == gunNumberToCheck;
 
-    /** Utility methodes **/
-
     /// <summary>
     /// Check the main gun caliber and return the range it belongs to as an array of 2 integers [min, max].
     /// the max rang is inclusive.
@@ -139,7 +145,12 @@ public class GroundVehicle
     }
 
     public override bool Equals(Object other) => this.VehicleName == ((GroundVehicle)other).VehicleName;
-    public override int GetHashCode() { return this.VehicleName.GetHashCode(); }
-    //public override bool Equals(Object other) => this.VehicleId == ((GroundVehicle)other).VehicleId;
-    //public override int GetHashCode(){ return this.VehicleId.GetHashCode(); }
+    public override int GetHashCode()
+    {
+        return this.VehicleName.GetHashCode();
+
+        //public override bool Equals(Object other) => this.VehicleId == ((GroundVehicle)other).VehicleId;
+        //public override int GetHashCode(){ return this.VehicleId.GetHashCode(); }
+
+    }
 }

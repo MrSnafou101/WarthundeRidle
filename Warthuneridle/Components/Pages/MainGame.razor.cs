@@ -1,17 +1,22 @@
-﻿using Warthuneridle.Utils;
+﻿using Microsoft.AspNetCore.Components;
+using Warthuneridle.Utils;
 
 namespace Warthuneridle.Components.Pages
 {
     public partial class MainGame{
+
+        [Inject]
+        public IGame GameService { get; set; }
+
         private List<GroundVehicle> availableVehicles = new();
-        private GroundVehicle targetVehicle;
+        private GroundVehicle? targetVehicle;
         private List<GroundVehicle> guesses = new();
         //private Dictionary<string, int> compareResults = new();
         private bool gameWon = false;
 
         protected override async Task OnInitializedAsync(){
             // Load vehicles from JSON
-            availableVehicles = await LoadVehiclesFromJson();
+            availableVehicles = GameService.GroundVehicles();
             SelectRandomTarget();
             Console.WriteLine(targetVehicle.VehicleName);
         }

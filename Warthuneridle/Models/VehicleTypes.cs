@@ -4,6 +4,7 @@ namespace Warthuneridle.Models
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum VehicleTypes{
+        Null,
         Medium,
         Heavy,
         Light,
@@ -11,6 +12,11 @@ namespace Warthuneridle.Models
         ATGM_carrier,
         MBT,
         TD,
-        ERR
+        ERR,
+        Fighter,
+        Heavy_bomber,
+        Frontline_bomber,
+        Attacker,
+        Interceptor
     }
 }

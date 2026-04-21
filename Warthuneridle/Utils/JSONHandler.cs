@@ -3,30 +3,63 @@ using System.Text.Json.Serialization;
 
 namespace Warthuneridle.Utils
 {
-    public class JSONHandler{
-        public string TestFilePath = Environment.CurrentDirectory + @"\Resources\GroundVehiclesDataset.json";
+    public class JSONHandler : IJSONHandler
+    {
+        //public string groundVehicleFilePath = Environment.CurrentDirectory + @"\Resources\GroundVehiclesDataset.json";
+        public string groundVehicleFilePath = AppContext.BaseDirectory + @"\Resources\GroundVehiclesDataset.json";
         //public string TestFilePath = Environment.CurrentDirectory + @"\Resources\VehicleTestDataset.json";
-        public List<GroundVehicle> LoadGroundVehicles = new List<GroundVehicle>();
 
-        public List<GroundVehicle> LoadGroundVehicleData(){
-            if (File.Exists(TestFilePath)){
-                string jsonString = File.ReadAllText(TestFilePath);
-                //LoadGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString) ?? new List<GroundVehicle>();
-
-
-                var options = new JsonSerializerOptions{
-                    PropertyNameCaseInsensitive = true
-                };
-                options.Converters.Add(new JsonStringEnumConverter());
-
-                LoadGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString, options) ?? new List<GroundVehicle>();
-
-                return LoadGroundVehicles;
-            }else{
-                Console.WriteLine($"File not found: {TestFilePath}");
-                return null;
-            }
+        public List<GroundVehicle> loadedGroundVehicles = new List<GroundVehicle>();
+        private readonly JsonSerializerOptions options = new JsonSerializerOptions();
+       
+        public JSONHandler(){
+        
+            options.PropertyNameCaseInsensitive = true;
+            options.WriteIndented =  true;
+            options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            options.Converters.Add(new JsonStringEnumConverter());
         }
 
+        public List<GroundVehicle> LoadGroundVehicleData()
+        {
+            if (File.Exists(groundVehicleFilePath))
+            {
+                string jsonString = File.ReadAllText(groundVehicleFilePath);
+
+                loadedGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString, options) ?? new List<GroundVehicle>();
+
+                return loadedGroundVehicles;
+            }
+            else
+            {
+                Console.WriteLine($"File not found: {groundVehicleFilePath}");
+                return loadedGroundVehicles;
+            }
+        }
+        public void Save(GroundVehicle vehicleToSave)
+        {
+            string updatedJsonString = string.Empty;
+
+            if (loadedGroundVehicles == null || loadedGroundVehicles.Count <= 0){
+                List<GroundVehicle> vehiclesToSave = LoadGroundVehicleData();
+                vehiclesToSave.Add(vehicleToSave);
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                };
+                updatedJsonString = JsonSerializer.Serialize(vehiclesToSave, options);
+            }else{
+                loadedGroundVehicles.Add(vehicleToSave);
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                };
+                updatedJsonString = JsonSerializer.Serialize(loadedGroundVehicles, options);
+            }
+
+            File.WriteAllText(groundVehicleFilePath, updatedJsonString);
+        }
     }
 }

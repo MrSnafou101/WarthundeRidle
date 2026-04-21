@@ -119,7 +119,7 @@
       "BattleRating": 12.3
     },
     "HasMultipleMainGuns": 1,
-    "HasAuxiliaryWeapons": true,
+    "HasAuxiliaryWeapons": false,
     "HasTracks": true,
     "WeightInTons": 59.5,
     "TechTreePosition": "TechTree",

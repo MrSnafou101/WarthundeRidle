@@ -11,6 +11,8 @@ namespace Warthuneridle.Models
         //SouthAmerica,
         Africa,
         Oceania,
-        Antarctica
+        Antarctica,
+        //default value for uninitialized continent
+        Unknown
     }
 }

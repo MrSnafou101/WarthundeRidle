@@ -1,3 +1,4 @@
+using Warthuneridle;
 using Warthuneridle.Components;
 using Warthuneridle.Utils;
 
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
-builder.Services.AddScoped<JSONHandler>();
+builder.Services.AddScoped<IJSONHandler, JSONHandler>();
+builder.Services.AddScoped<IGame, Game>();
 //to remove
 builder.Services.AddLogging(config =>
 {
@@ -14,11 +16,15 @@ builder.Services.AddLogging(config =>
 });
 
 var app = builder.Build();
+using var scope = app.Services.CreateScope();
+await scope.ServiceProvider.GetRequiredService<IGame>().InitializeAsync();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
+    app.UseDeveloperExceptionPage();
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }

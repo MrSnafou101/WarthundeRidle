@@ -23,6 +23,9 @@
     
     @if (gameWon)
     {
+        <button class="play-again-btn" @onclick="ResetGame">
+            Play again
+        </button>
         <ResultModal VehicleFound="targetVehicle"
                      NumberOfTries="guesses.Count" 
                      OnPlayAgain="ResetGame" />

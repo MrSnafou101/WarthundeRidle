@@ -36,6 +36,7 @@ namespace Warthuneridle.Utils
                 case "united kingdom": return FlagIcon4x3.Gb;
                 case "uae": return FlagIcon4x3.Ae;
                 case "usa": return FlagIcon4x3.Us;
+                case "ussr": return FlagIcon4x3.Ru;
                 default : return FlagIcon4x3.Xx;
             }
         }

@@ -1,6 +1,6 @@
 ﻿@page "/"
 @rendermode InteractiveServer
-@inject JSONHandler JsonHandler
+@inject Game gameService
 
 <PageTitle>Home</PageTitle>
 
@@ -13,10 +13,8 @@
 @code {
     private void TestJsonLoad()
     {
-        var vehicles = JsonHandler.LoadGroundVehicleData();
+        var vehicles = gameService.LoadGroundVehicleData();
         Console.WriteLine($"Loaded {vehicles.Count} vehicles");
         vehicles.ForEach(v => Console.WriteLine(v.VehicleId + " " + v.VehicleName  + " " + v.Country.NationName));
-        var tmp = vehicles[0].CompareVehicles(vehicles[2]);
-        Console.WriteLine($"Comparing {vehicles[0].VehicleName} and {vehicles[2].VehicleName}:");
     }
 }
