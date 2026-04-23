@@ -1,45 +1,65 @@
-﻿using Warthuneridle.Models;
+﻿using Microsoft.AspNetCore.Components;
+using Warthuneridle.Models;
 using Warthuneridle.Utils;
 
 namespace Warthuneridle.Components.Pages
 {
     public partial class Settings
     {
-        private Vehicle vehicleToAdd;
-        public List<string> vehicleCategory = new List<string> { "category", "Ground", "Air", "Naval" };
-        public bool isCategorySelected = false;
-        public string selectedCategory = "category";
+        [Inject]
+        public required IGame GameService { get; set; }
 
-        public bool OnCategorySelected(string category) => category switch
+        public List<string> vehicleCategory = new List<string> { "Category", "Ground", "Air", "Naval" };
+        public bool isCategorySelected = false;
+        public string selectedCategory = "Category";
+
+        public void OnCategorySelected()
         {
-            "Ground" => GroundSettings(category),
-            "Air" => AirSettings(category),
-            "Naval" => NavalSettings(category),
-            "category" => isCategorySelected = false,
-            _ => isCategorySelected = false
-        };
+            switch (selectedCategory){
+                case "Ground":
+                    GroundSettings(selectedCategory);
+                    break;
+                case "Air":
+                    AirSettings(selectedCategory);
+                    break;
+                case "Naval":
+                    NavalSettings(selectedCategory);
+                    break;
+                case "category": isCategorySelected = false;
+                    break;
+                default: isCategorySelected = false;
+                    break;
+            }
+        }
 
         private bool GroundSettings(string category)
         {
-            selectedCategory = "Ground";
+            //selectedCategory = "Ground";
+            Console.WriteLine("Ground settings selected");
+            isCategorySelected = true;
             return true;
         }
         private bool NavalSettings(string category)
         {
-            selectedCategory = "Naval";
+            //selectedCategory = "Naval";
+            Console.WriteLine("Naval settings selected");
+            isCategorySelected = true;
             return true;
         }
 
         private bool AirSettings(string category)
         {
-            selectedCategory = "Air";
+            //selectedCategory = "Air";
+            Console.WriteLine("Air settings selected");
+            isCategorySelected = true;
             return true;
         }
 
         public void SaveNewVehicle(GroundVehicle vehicleToSave)
         {
-            new JSONHandler().save(vehicleToSave);
+            //GameService.Save(vehicleToSave);
             Console.WriteLine("Saving new vehicle of type => " + selectedCategory);
+            Console.WriteLine(vehicleToSave);
         }
 
     }

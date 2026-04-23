@@ -6,7 +6,7 @@ namespace Warthuneridle.Components.Pages
     public partial class MainGame{
 
         [Inject]
-        public IGame GameService { get; set; }
+        public required IGame GameService { get; set; }
 
         private List<GroundVehicle> availableVehicles = new();
         private GroundVehicle? targetVehicle;
@@ -38,13 +38,6 @@ namespace Warthuneridle.Components.Pages
         private void SelectRandomTarget(){
             var random = new Random();
             targetVehicle = availableVehicles[random.Next(availableVehicles.Count)];
-        }
-
-        private async Task<List<GroundVehicle>> LoadVehiclesFromJson(){
-            
-            JSONHandler jsonHandler = new JSONHandler();
-            availableVehicles = jsonHandler.LoadGroundVehicleData();
-            return availableVehicles;
         }
     }
 }

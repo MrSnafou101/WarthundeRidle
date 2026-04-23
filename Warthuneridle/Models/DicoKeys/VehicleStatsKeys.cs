@@ -8,14 +8,20 @@
         rank,
         type,
         position,
-        //ground properties
         guncaliber,
+        //ground properties
         gunamount,
         auxiliarygun,
         weight,
-        tracks
+        tracks,
         //air properties
-
+        enginetype,
+        maxaltitude,
+        cangomach1,
+        maxspeed,
+        cancarrygroundordnance,
         //naval properties
+        tonnage,
+        numberofmainguns
     }
 }

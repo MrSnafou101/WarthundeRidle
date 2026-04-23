@@ -1,16 +1,19 @@
-﻿using Warthuneridle.Models.DicoKeys;
+﻿using System.ComponentModel.DataAnnotations;
+using Warthuneridle.Models.DicoKeys;
 
 namespace Warthuneridle.Models
 {
     public abstract class Vehicle: ICloneable
     {
-        public int VehicleId { get; set; }//may change to UUID later
+        public int VehicleId { get; set; } = 0; //may change to UUID later
         public string VehicleName { get; set; } = "vehicle name";
         public string? PictureURL { get; set; }
         public VehicleTypes VehicleType { get; set; }
         public Nation Country { get; set; } = new Nation();
         public VehicleRank Rank { get; set; } = new VehicleRank();
         public TechTreePositions TechTreePosition { get; set; }
+        [Range(0, 800)]
+        public double MainGunCaliber { get; set; }
         public Dictionary<VehicleStatsKeys, int>? ComparisonResults { get; set; }
 
         public abstract Dictionary<VehicleStatsKeys, int> CompareVehicles(Vehicle target);
@@ -35,9 +38,43 @@ namespace Warthuneridle.Models
             else return 0;
         }
 
-        //will need some tweeking later 
+        /// <summary>
+        /// Check main gun caliber to see if they are the same or at least within the same range.
+        /// </summary>
+        /// <param name="toCheckCaliber">Gun caliber to compare with</param>
+        /// <returns>
+        /// return 1 if the caliber is the same,
+        /// return 2 if the caliber is not the same but within the same range,
+        /// return 0 if the caliber isn't the same nor within the same range
+        /// </returns>
+        public int IsSameCaliber(int toCheckCaliber)
+        {
+            int[] caliberRange = GetCaliberRange();
+            if (this.MainGunCaliber == toCheckCaliber) return 1;
+            else if (caliberRange[0] <= toCheckCaliber && toCheckCaliber <= caliberRange[1]) return 2;
+            else return 0;
+        }
+
+        /// <summary>
+        /// Check the main gun caliber and return the range it belongs to as an array of 2 integers [min, max].
+        /// the max rang is inclusive.
+        /// </summary>
+        /// <returns>
+        /// retur nan array of 2 integers [min, max] representing the range the caliber belongs to.
+        /// </returns>
+        private int[] GetCaliberRange()
+        {
+            switch (((int)this.MainGunCaliber))
+            {
+                case <= 35: return new int[] { 0, 35 };
+                case > 35 and <= 100: return new int[] { 36, 100 };
+                case > 100: return new int[] { 101, 800 };// 800 is just a placeholder for "infinity"
+            }
+        }
+
+        //will need some updates later 
         public override bool Equals(Object other) => this.VehicleName == ((Vehicle)other).VehicleName;
-        public override int GetHashCode() { return this.VehicleName.GetHashCode(); }
+        public override int GetHashCode() { return this.VehicleId.GetHashCode() + this.VehicleName.GetHashCode(); }
 
     }
 }

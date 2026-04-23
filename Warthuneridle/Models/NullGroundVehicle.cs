@@ -16,6 +16,12 @@ public sealed class NullGroundVehicle : Vehicle
         Rank = new VehicleRank();
         TechTreePosition = TechTreePositions.Null;
     }
+
+    public override object Clone()
+    {
+        return this;
+    }
+
     public override Dictionary<VehicleStatsKeys, int> CompareVehicles(Vehicle target)
     {
         ComparisonResults = new Dictionary<VehicleStatsKeys, int>();

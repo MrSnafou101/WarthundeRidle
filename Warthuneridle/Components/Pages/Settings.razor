@@ -1,35 +1,18 @@
 ﻿@page "/settings"
 @rendermode InteractiveServer
 @using Warthuneridle.Components.Customs
-@inject JSONHandler JsonHandler
 
 <h3>Settings</h3>
-
-<div class="suggestions-dropdown">
+<InputSelect class="form-select w-auto" @bind-Value="selectedCategory" @bind-Value:after="OnCategorySelected">
     @foreach (var category in vehicleCategory)
     {
-        <div class="suggestion-item"
-            @onmousedown="@(() => OnCategorySelected(category))">
-            @category
-        </div>
+        <option value="@category">@category</option>
     }
-</div>
+</InputSelect>
+
 @if (isCategorySelected)
 {
     <h4>Hello world!</h4>
-    /* comon attributes:
-    **************************
-    *  - VehicleId => not showed inserted programaticaly
-    *  - VehicleName => InputText
-    *  - VehicleType => Dropdown -> options based on the category selected
-    *  - Country => Dropdown  or InputText with suggestions based on the category selected
-    *  - Rank / BR => Dropdown -> options based on the category selected OR InputNumber
-    *  - TechTreePosition => Dropdown ->> static options
-    *  - ImageUrl => InputFile with restriction on png and jpg/jpeg
-    *****************************
-    * ground specific attributes:
-    *  - MainGunCaliber => InputNumber with restriction on the range
-    */
 
     @switch(selectedCategory)
     {

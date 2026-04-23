@@ -1,69 +1,96 @@
-[
-  {
-    "VehicleId": 1,
-    "VehicleName": "Tiger II (H)",
-    "PictureURL": "null",
-    "Country": {
-      "NationName": "Germany",
-      "Continent": "Europe",
-      "FlagURL": "null"
-    },
-    "VehicleType": "Heavy",
-    "MainGunCaliber": 88,
-    "Rank": {
-      "RankValue": 4,
-      "BattleRating": 6.7
-    },
-    "HasMultipleMainGuns": 1,
-    "HasAuxiliaryWeapons": false,
-    "HasTracks": true,
-    "WeightInTons": 69,
-    "TechTreePosition": "TechTree",
-    "speed": 41
-  },
-  {
-    "_vehicleId": 2,
-    "VehicleName": "M1A2 Abrams",
-    "PictureURL": "null",
-    "Country": {
-      "NationName": "USA",
-      "Continent": "America",
-      "FlagURL": "null"
-    },
-    "VehicleType": "MBT",
-    "MainGunCaliber": 120,
-    "Rank": {
-      "RankValue": 7,
-      "BattleRating": 12.0
-    },
-    "HasMultipleMainGuns": 1,
-    "HasAuxiliaryWeapons": false,
-    "HasTracks": true,
-    "WeightInTons": 62,
-    "TechTreePosition": "TechTree",
-    "speed": 67
-  },
-  {
-    "VehicleId": 3,
-    "VehicleName": "Panther F",
-    "PictureURL": "null",
-    "Country": {
-      "NationName": "Germany",
-      "Continent": "Europe",
-      "FlagURL": "null"
-    },
-    "VehicleType": "Medium",
-    "MainGunCaliber": 75,
-    "Rank": {
-      "RankValue": 4,
-      "BattleRating": 6.0
-    },
-    "HasMultipleMainGuns": 1,
-    "HasAuxiliaryWeapons": false,
-    "HasTracks": true,
-    "WeightInTons": 65,
-    "TechTreePosition": "TechTree",
-    "speed": 50
-  }
+{
+  "ground": [
+    {
+      "VehicleId": 1,
+      "VehicleName": "Tiger II (H)",
+      "PictureURL": "null",
+      "Country": {
+        "NationName": "Germany",
+        "Continent": "Europe",
+        "FlagURL": "null"
+      },
+      "VehicleType": "Heavy",
+      "MainGunCaliber": 88,
+      "Rank": {
+        "RankValue": 4,
+        "BattleRating": 6.7
+      },
+      "HasMultipleMainGuns": 1,
+      "HasAuxiliaryWeapons": false,
+      "HasTracks": true,
+      "WeightInTons": 69,
+      "TechTreePosition": "TechTree"
 
-]
+    },
+    {
+      "VehicleId": 2,
+      "VehicleName": "M1A2 Abrams",
+      "PictureURL": "null",
+      "Country": {
+        "NationName": "USA",
+        "Continent": "America",
+        "FlagURL": "null"
+      },
+      "VehicleType": "MBT",
+      "MainGunCaliber": 120,
+      "Rank": {
+        "RankValue": 7,
+        "BattleRating": 12.0
+      },
+      "HasMultipleMainGuns": 1,
+      "HasAuxiliaryWeapons": false,
+      "HasTracks": true,
+      "WeightInTons": 62,
+      "TechTreePosition": "TechTree"
+    }
+
+  ],
+  "air": [
+    {
+      "VehicleId": 1,
+      "VehicleName": "P-51D",
+      "PictureURL": "null",
+      "Country": {
+        "NationName": "USA",
+        "Continent": "America",
+        "FlagURL": "null"
+      },
+      "VehicleType": "Fighter",
+      "MainGunCaliber": 12.7,
+      "Rank": {
+        "RankValue": 3,
+        "BattleRating": 4.0
+      },
+      "EngineType": "propeller",
+      "MaxAltitude": 12700,
+      "CanGoMach1": false,
+      "TechTreePosition": "TechTree",
+      "MaxSpeed": 855,
+      "CanCarryGroundOrdnance":  true
+    }
+  ],
+  "naval" : [
+    {
+      "VehicleId": 1,
+      "VehicleName": "USS Iowa",
+      "PictureURL": "null",
+      "Country": {
+        "NationName": "USA",
+        "Continent": "America",
+        "FlagURL": "null"
+      },
+      "VehicleType": "Battleship",
+      "MainGunCaliber": 406,
+      "Rank": {
+        "RankValue": 6,
+        "BattleRating": 8.0
+      },
+      "NumberOfMainCaliberGuns": 9,
+      "HasAuxiliaryWeapons": true,
+      "HasTracks": false,
+      "Tonnage": 45000,
+      "TechTreePosition": "TechTree",
+      "speed": 33
+    }
+  ]
+}

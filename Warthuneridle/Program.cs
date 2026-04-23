@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
-builder.Services.AddScoped<IJSONHandler, JSONHandler>();
-builder.Services.AddScoped<IGame, Game>();
+builder.Services.AddSingleton<IJSONHandler, JSONHandler>();
+builder.Services.AddSingleton<IGame, Game>();
 //to remove
 builder.Services.AddLogging(config =>
 {

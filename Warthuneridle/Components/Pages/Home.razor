@@ -1,6 +1,6 @@
 ﻿@page "/"
 @rendermode InteractiveServer
-@inject Game gameService
+@inject IGame gameService
 
 <PageTitle>Home</PageTitle>
 
@@ -13,7 +13,7 @@
 @code {
     private void TestJsonLoad()
     {
-        var vehicles = gameService.LoadGroundVehicleData();
+        var vehicles = gameService.GroundVehicles();
         Console.WriteLine($"Loaded {vehicles.Count} vehicles");
         vehicles.ForEach(v => Console.WriteLine(v.VehicleId + " " + v.VehicleName  + " " + v.Country.NationName));
     }

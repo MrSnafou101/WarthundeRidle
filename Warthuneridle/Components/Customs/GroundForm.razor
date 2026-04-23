@@ -1,3 +1,54 @@
-﻿<h3>GroundForm</h3>
+﻿@using Warthuneridle.Models
 
-<button class="btn btn-primary" @onclick="CreateVehicle">Add Vehicle</button>
+<h3>GroundForm</h3>
+
+<EditForm Model="newGroundVehicle" OnValidSubmit="CreateVehicle">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <InputText class="form-control" @bind-Value="newGroundVehicle.VehicleName" />
+    </div>
+    <InputSelect class="form-select w-auto" @bind-Value="newGroundVehicle.VehicleType">
+        <option value="">Select a type</option>
+        @foreach (var type in Enum.GetValues(typeof(VehicleTypes)).Cast<VehicleTypes>())
+        {
+            <option value="@type">@type</option>
+        }
+    </InputSelect>
+
+    <InputSelect class="form-select w-auto" @bind-Value="newGroundVehicle.TechTreePosition">
+        <option value="">Select a position</option>
+        @foreach(var pos in Enum.GetValues(typeof(TechTreePositions)).Cast<TechTreePositions>()){
+            <option value="@pos">@pos</option>
+        }
+    </InputSelect>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Main Gun Caliber</label>
+            <InputNumber class="form-control" @bind-Value="newGroundVehicle.MainGunCaliber"/>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Gun amount (0/1/2)</label>
+            <InputNumber class="form-control" @bind-Value="newGroundVehicle.HasMultipleMainGuns" />
+        </div>
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Weight (tons)</label>
+            <InputNumber class="form-control" @bind-Value="newGroundVehicle.WeightInTons" />
+        </div>
+    </div>
+
+    <div class="form-check mb-3">
+        <InputCheckbox class="form-check-input" @bind-Value="newGroundVehicle.HasAuxiliaryWeapons" />
+        <label class="form-check-label">Has auxiliary weapons</label>
+    </div>
+
+    <div class="form-check mb-3">
+        <InputCheckbox class="form-check-input" @bind-Value="newGroundVehicle.HasTracks" />
+        <label class="form-check-label">Has tracks</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Vehicle</button>
+    <button type="button" class="btn btn-secondary ms-2" @onclick="Reset">Reset</button>
+</EditForm>
+

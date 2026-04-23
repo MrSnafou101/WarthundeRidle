@@ -1,5 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Data;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+using Warthuneridle.Models;
 
 namespace Warthuneridle.Utils
 {
@@ -7,7 +9,7 @@ namespace Warthuneridle.Utils
     {
         //public string groundVehicleFilePath = Environment.CurrentDirectory + @"\Resources\GroundVehiclesDataset.json";
         public string groundVehicleFilePath = AppContext.BaseDirectory + @"\Resources\GroundVehiclesDataset.json";
-        //public string TestFilePath = Environment.CurrentDirectory + @"\Resources\VehicleTestDataset.json";
+        //public string groundVehicleFilePath = Environment.CurrentDirectory + @"\Resources\VehicleTestDataset.json";
 
         public List<GroundVehicle> loadedGroundVehicles = new List<GroundVehicle>();
         private readonly JsonSerializerOptions options = new JsonSerializerOptions();
@@ -20,20 +22,38 @@ namespace Warthuneridle.Utils
             options.Converters.Add(new JsonStringEnumConverter());
         }
 
-        public List<GroundVehicle> LoadGroundVehicleData()
+        public async Task<DeserializedObjectWrapper> LoadVehicleDataAsync()
+        {
+            if (File.Exists(groundVehicleFilePath))
+            {
+                string jsonString = await File.ReadAllTextAsync(groundVehicleFilePath);
+                DeserializedObjectWrapper dataset = JsonSerializer.Deserialize<DeserializedObjectWrapper>(jsonString, options)
+                    ?? new DeserializedObjectWrapper();
+
+                return dataset;
+            }
+            else
+            {
+                Console.WriteLine($"File not found: {groundVehicleFilePath}");
+                return new DeserializedObjectWrapper();
+            }
+        }
+
+        public DeserializedObjectWrapper LoadVehicleData()
         {
             if (File.Exists(groundVehicleFilePath))
             {
                 string jsonString = File.ReadAllText(groundVehicleFilePath);
 
-                loadedGroundVehicles = JsonSerializer.Deserialize<List<GroundVehicle>>(jsonString, options) ?? new List<GroundVehicle>();
+                DeserializedObjectWrapper  dataset = JsonSerializer.Deserialize<DeserializedObjectWrapper>(jsonString, options)
+                    ?? new DeserializedObjectWrapper();
 
-                return loadedGroundVehicles;
+                return dataset;
             }
             else
             {
                 Console.WriteLine($"File not found: {groundVehicleFilePath}");
-                return loadedGroundVehicles;
+                return new DeserializedObjectWrapper();
             }
         }
         public void Save(GroundVehicle vehicleToSave)
@@ -41,8 +61,8 @@ namespace Warthuneridle.Utils
             string updatedJsonString = string.Empty;
 
             if (loadedGroundVehicles == null || loadedGroundVehicles.Count <= 0){
-                List<GroundVehicle> vehiclesToSave = LoadGroundVehicleData();
-                vehiclesToSave.Add(vehicleToSave);
+                DeserializedObjectWrapper vehiclesToSave = LoadVehicleData();
+                vehiclesToSave.Ground.Add(vehicleToSave);//To change
                 var options = new JsonSerializerOptions
                 {
                     WriteIndented = true,

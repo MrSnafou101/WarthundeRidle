@@ -1,8 +1,11 @@
-﻿namespace Warthuneridle.Utils
+﻿using Warthuneridle.Models;
+
+namespace Warthuneridle.Utils
 {
     public interface IJSONHandler
     {
-        public List<GroundVehicle> LoadGroundVehicleData();
+        public Task<DeserializedObjectWrapper> LoadVehicleDataAsync();
+        public DeserializedObjectWrapper LoadVehicleData();
         public void Save(GroundVehicle vehicleToSave);
     }
 }

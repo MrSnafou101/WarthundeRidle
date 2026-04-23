@@ -12,11 +12,11 @@ namespace Warthuneridle.Models
         ATGM_carrier,
         MBT,
         TD,
-        ERR,
         Fighter,
         Heavy_bomber,
         Frontline_bomber,
         Attacker,
-        Interceptor
+        Interceptor,
+        Battleship
     }
 }
