@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Warthuneridle.Models;
-using Warthuneridle.Utils;
 
 namespace Warthuneridle.Components.Pages
 {
@@ -59,6 +57,8 @@ namespace Warthuneridle.Components.Pages
         {
             //GameService.Save(vehicleToSave);
             Console.WriteLine("Saving new vehicle of type => " + selectedCategory);
+            Console.WriteLine(vehicleToSave);
+            Console.WriteLine(vehicleToSave.GetType());
             Console.WriteLine(vehicleToSave);
         }
 

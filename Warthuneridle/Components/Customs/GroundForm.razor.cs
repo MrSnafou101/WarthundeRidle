@@ -5,16 +5,22 @@ namespace Warthuneridle.Components.Customs
 {
     public partial class GroundForm
     {
-        public GroundVehicle newGroundVehicle = new GroundVehicle();
+        //public GroundVehicle newGroundVehicle = NullGroundVehicle.Instance;
+        public GroundVehicle newGroundVehicle =new GroundVehicle();
 
         [Parameter]
         public EventCallback<GroundVehicle> OnVehicleCreated { get; set; }
+        public string vType = "Ground";
 
         private void Reset()
         {
             newGroundVehicle = new GroundVehicle();
+            vType = "Ground";
         }
 
+        public void OnTypeChange() { 
+            newGroundVehicle.VehicleType = VehicleTypes.GetFromName(vType);
+        }
         //private void CreateVehicle()
         //{
         //    // Id and PictureURL are ignored for now as requested

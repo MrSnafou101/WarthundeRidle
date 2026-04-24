@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 builder.Services.AddSingleton<IJSONHandler, JSONHandler>();
 builder.Services.AddSingleton<IGame, Game>();
+
 //to remove
 builder.Services.AddLogging(config =>
 {

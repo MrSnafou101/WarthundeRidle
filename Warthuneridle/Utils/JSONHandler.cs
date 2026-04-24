@@ -20,6 +20,7 @@ namespace Warthuneridle.Utils
             options.WriteIndented =  true;
             options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             options.Converters.Add(new JsonStringEnumConverter());
+            options.Converters.Add(new VehicleTypesJsonConverter());
         }
 
         public async Task<DeserializedObjectWrapper> LoadVehicleDataAsync()

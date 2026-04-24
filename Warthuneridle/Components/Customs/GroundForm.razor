@@ -1,6 +1,5 @@
 ﻿@using Warthuneridle.Models
 
-<h3>GroundForm</h3>
 
 <EditForm Model="newGroundVehicle" OnValidSubmit="CreateVehicle">
     <DataAnnotationsValidator />
@@ -8,21 +7,23 @@
         <label class="form-label">Name</label>
         <InputText class="form-control" @bind-Value="newGroundVehicle.VehicleName" />
     </div>
-    <InputSelect class="form-select w-auto" @bind-Value="newGroundVehicle.VehicleType">
-        <option value="">Select a type</option>
-        @foreach (var type in Enum.GetValues(typeof(VehicleTypes)).Cast<VehicleTypes>())
-        {
-            <option value="@type">@type</option>
-        }
-    </InputSelect>
-
-    <InputSelect class="form-select w-auto" @bind-Value="newGroundVehicle.TechTreePosition">
-        <option value="">Select a position</option>
-        @foreach(var pos in Enum.GetValues(typeof(TechTreePositions)).Cast<TechTreePositions>()){
-            <option value="@pos">@pos</option>
-        }
-    </InputSelect>
-
+    <div class="col-md-8">
+        <label class="form-label">Vehicle type</label>
+        <InputSelect class="form-select w-auto" @bind-Value="newGroundVehicle.VehicleType" @bind-Value:get="OnTypeChange">
+            @foreach (var type in VehicleTypes.ListGround()) @* TODO : change to use OnTypeChange *@
+            {
+                <option value="@type.Name">@type.Name</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="col-md-8">
+        <label class="form-label">Techtree position</label>
+        <InputSelect class="form-select w-auto" @bind-Value="newGroundVehicle.TechTreePosition">
+            @foreach(var pos in Enum.GetValues(typeof(TechTreePositions)).Cast<TechTreePositions>()){
+                <option value="@pos">@pos</option>
+            }
+        </InputSelect>
+    </div>
     <div class="row">
         <div class="col-md-4 mb-3">
             <label class="form-label">Main Gun Caliber</label>

@@ -1,20 +1,23 @@
-﻿using System;
-using System.Security.Claims;
-using Warthuneridle.Models;
+﻿using Warthuneridle.Models;
 using Warthuneridle.Models.DicoKeys;
 
 
-public sealed class NullGroundVehicle : Vehicle
+public sealed class NullGroundVehicle : Vehicle //GroundVehicle
 {
     public static readonly NullGroundVehicle Instance = new NullGroundVehicle();
     private NullGroundVehicle()
     {
         VehicleId = -1;
         VehicleName = "Null Ground Vehicle";
-        VehicleType = VehicleTypes.Null;
+        VehicleType = VehicleTypes.NULL;
         Country = new Nation();
         Rank = new VehicleRank();
         TechTreePosition = TechTreePositions.Null;
+        MainGunCaliber = 0.0;
+        //HasMultipleMainGuns = 0;
+        //HasAuxiliaryWeapons = false;
+        //HasTracks = false;
+        //WeightInTons = 0.0;
     }
 
     public override object Clone()

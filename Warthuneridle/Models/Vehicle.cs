@@ -6,12 +6,13 @@ namespace Warthuneridle.Models
     public abstract class Vehicle: ICloneable
     {
         public int VehicleId { get; set; } = 0; //may change to UUID later
+        [RegularExpression(@"[a-zA-Z0-9 _\-\(\)]+", ErrorMessage = "Characters are not allowed.")]
         public string VehicleName { get; set; } = "vehicle name";
         public string? PictureURL { get; set; }
-        public VehicleTypes VehicleType { get; set; }
+        public VehicleTypes VehicleType { get; set; } = VehicleTypes.NULL;
         public Nation Country { get; set; } = new Nation();
         public VehicleRank Rank { get; set; } = new VehicleRank();
-        public TechTreePositions TechTreePosition { get; set; }
+        public TechTreePositions TechTreePosition { get; set; } = TechTreePositions.Null;
         [Range(0, 800)]
         public double MainGunCaliber { get; set; }
         public Dictionary<VehicleStatsKeys, int>? ComparisonResults { get; set; }

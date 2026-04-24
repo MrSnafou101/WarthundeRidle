@@ -344,7 +344,7 @@
         "Continent": "Asia",
         "FlagURL": "null"
       },
-      "VehicleType": "ATGM_carrier",
+      "VehicleType": "ATGM",
       "MainGunCaliber": 127,
       "Rank": {
         "RankValue": 5,
