@@ -10,14 +10,22 @@ public class GroundVehicle : Vehicle
      int instead of boolean the amount of guns will be a hint like so:
         0 = no main gun (ATGM carrier, SAM AA)
         1 = one main gun
-        2 = more than 2 main guns
+        2 = 2 or more main guns
      */
-    [AllowedValues(0, 1, 2)]
+    [Display(Name = "Number of main guns 0,1 or 2+")]
+    [AllowedValues(0, 1, 2, ErrorMessage = "The number of main guns should be 0, 1 or 2+")]
     public int HasMultipleMainGuns { get; set; }
+
+    [Display(Name = "Have auxiliary weapons (MG excluded)")]
     public bool HasAuxiliaryWeapons { get; set; }
+
+    [Display(Name = "Use tracks")]
     public bool HasTracks { get; set; }
-    [Range(0, Double.MaxValue)] //Continue ajjouter validation attributes as needed
+
+    [Display(Name = "Weight (tons)")]
+    [Range(0, 500, ErrorMessage = "The weights must be between 0 and 500 tons")]
     public double WeightInTons { get; set; }
+
     public GroundVehicle() { }
     public GroundVehicle(int id, string name, Nation country, VehicleRank rank, VehicleTypes vehicleType, TechTreePositions techTreePosition, 
         double mainGunCaliber, int hasMultipleMainGuns, bool hasAuxiliaryWeapons, bool hasTracks, double weightInTons){

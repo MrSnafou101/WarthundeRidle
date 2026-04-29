@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Warthuneridle.Models;
+using Warthuneridle.Models.Wrapper;
 
 namespace Warthuneridle.Utils
 {

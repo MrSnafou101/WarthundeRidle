@@ -1,4 +1,4 @@
-﻿namespace Warthuneridle.Models
+﻿namespace Warthuneridle.Models.Wrapper
 {
     public class DeserializedObjectWrapper
     {

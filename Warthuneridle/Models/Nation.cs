@@ -1,8 +1,14 @@
-﻿using Warthuneridle.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Warthuneridle.Models;
 
 public class Nation{
+    [Display(Name = "Nation Name", GroupName ="Nation")]
     public string NationName { get; set; } = "nation name";
+
+    [Display(Name = "Nation Flag", GroupName = "Nation")]
     public string? FlagURL { get; set; }
+
+    [Display(Name = "Continent", GroupName = "Nation")]
     public Continents Continent { get; set; } = Continents.Unknown;
 
     public int IsCorrectNation(Nation nationToCompare){

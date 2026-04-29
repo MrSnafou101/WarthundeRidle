@@ -6,15 +6,27 @@ namespace Warthuneridle.Models
     public abstract class Vehicle: ICloneable
     {
         public int VehicleId { get; set; } = 0; //may change to UUID later
-        [RegularExpression(@"[a-zA-Z0-9 _\-\(\)]+", ErrorMessage = "Characters are not allowed.")]
+
+        [Display(Name = "Vehicle Name")]
+        [RegularExpression(@"[a-zA-Z0-9 _\-\(\)]+", ErrorMessage = "Some characters are not allowed.")]
         public string VehicleName { get; set; } = "vehicle name";
+
         public string? PictureURL { get; set; }
+
+        [Display(Name = "Vehicle Type")]
         public VehicleTypes VehicleType { get; set; } = VehicleTypes.NULL;
+
         public Nation Country { get; set; } = new Nation();
+
         public VehicleRank Rank { get; set; } = new VehicleRank();
+
+        [Display(Name = "Position in the Techtree")]
         public TechTreePositions TechTreePosition { get; set; } = TechTreePositions.Null;
-        [Range(0, 800)]
+
+        [Display(Name = "Main gun caliber")]
+        [Range(0, 800, ErrorMessage = "Main gun caliber must be between 0 and 800mm")]
         public double MainGunCaliber { get; set; }
+
         public Dictionary<VehicleStatsKeys, int>? ComparisonResults { get; set; }
 
         public abstract Dictionary<VehicleStatsKeys, int> CompareVehicles(Vehicle target);

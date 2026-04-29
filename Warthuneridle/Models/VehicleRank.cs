@@ -1,5 +1,12 @@
-﻿public class VehicleRank{
+﻿using System.ComponentModel.DataAnnotations;
+using Warthuneridle.Utils;
+
+public class VehicleRank{
+
+    [Display(Name = "Rank", GroupName = "Ranking")]
     public int RankValue { get; set; } = -1;
+
+    [Display(Name = "Battle Rating", GroupName = "Ranking")]
     public double BattleRating { get; set; } = -1.0;
 
     public string getRankString(){
@@ -23,6 +30,6 @@
     }
 
     public override string ToString(){
-        return $"Rank {RankValue} : BR {BattleRating}";
+        return $"Rank {NumberParser.ToRomanNumeral(RankValue)} : BR {BattleRating}";
     }
 }

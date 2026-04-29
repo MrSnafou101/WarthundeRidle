@@ -6,16 +6,16 @@ namespace Warthuneridle.Components.Customs
     public partial class GroundForm
     {
         //public GroundVehicle newGroundVehicle = NullGroundVehicle.Instance;
-        public GroundVehicle newGroundVehicle =new GroundVehicle();
+        public GroundVehicle newGroundVehicle = new GroundVehicle();
 
         [Parameter]
         public EventCallback<GroundVehicle> OnVehicleCreated { get; set; }
-        public string vType = "Ground";
+        public string vType = VehicleTypes.NULL.Name;
 
         private void Reset()
         {
             newGroundVehicle = new GroundVehicle();
-            vType = "Ground";
+            vType = VehicleTypes.NULL.Name;
         }
 
         public void OnTypeChange() { 
@@ -31,6 +31,7 @@ namespace Warthuneridle.Components.Customs
         //}
 
         private async Task CreateVehicle(){
+            Console.WriteLine("Creating vehicle: " + newGroundVehicle);
             await OnVehicleCreated.InvokeAsync(newGroundVehicle);
         }
     }

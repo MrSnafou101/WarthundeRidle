@@ -1,4 +1,5 @@
 ﻿using Warthuneridle.Models;
+using Warthuneridle.Models.Wrapper;
 using Warthuneridle.Utils;
 
 namespace Warthuneridle
